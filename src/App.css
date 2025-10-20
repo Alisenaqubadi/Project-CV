@@ -1,42 +1,136 @@
-#root {
-  max-width: 1280px;
+.header {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.header > h1:hover {
+    background: #181717;
+    border-radius: 1rem;
+    transform: translate(0.25rem,1rem);
+    transition: all 1s ease;
+}
+
+.header > h1 {
+    padding: 1.25rem 3rem 0 3rem;
+    transition: all 1s ease-in;
+    height: 60%;
+    margin: 0;
+}
+
+.body {
+    flex: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form {
+    height: 70%;
+    width: min(55%,580px);
+    background: #000;
+    margin: auto;
+    border-radius: 1rem;
+}
+
+.form > h2 {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.input-form {
+    display: grid;
+    height: 50%;
+    margin-top: 2rem
+}
+
+.center-btn {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.date-parent {
+  width: 100%;
+  max-width: 290px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  transform: translate(-3%);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+
+/* use on a <button class="nice-btn">...</button> */
+/* Designed for a black app background (body {background:#000}) */
+
+.nice-btn{
+  background: linear-gradient(180deg,#ffffff 0%, #f2f2f2 100%);
+  color: #0a0a0a;
+  border: none;
+  padding: .6rem 1.05rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.6);
+  cursor: pointer;
+  letter-spacing: .6px;
+  text-transform: none;
+  transition: transform .14s ease, box-shadow .14s ease, filter .14s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* hover / focus */
+.nice-btn:hover,
+.nice-btn:focus{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.65);
+  outline: 3px solid rgba(255,255,255,0.08);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* active (press) */
+.nice-btn:active{
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.5);
+  filter: brightness(.98);
 }
 
-.card {
-  padding: 2em;
+/* small / large variants (optional) */
+.nice-btn.sm{ padding: .4rem .8rem; font-size:.85rem; border-radius:10px;}
+.nice-btn.lg{ padding: .9rem 1.4rem; font-size:1.05rem; border-radius:16px;}
+
+/* input field to match .nice-btn style on dark background */
+
+.nice-input {
+  background: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
+  color: #0a0a0a;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  outline: none;
+  transition: box-shadow 0.14s ease, transform 0.14s ease, filter 0.14s ease;
+  width: 100%;
+  max-width: 280px;
+  -webkit-tap-highlight-color: transparent;
+  margin: auto;
 }
 
-.read-the-docs {
-  color: #888;
+/* focus / hover */
+.nice-input:focus,
+.nice-input:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  font-size: 97%;
+}
+
+/* placeholder color */
+.nice-input::placeholder {
+  color: #555;
+  opacity: 0.8;
+}
+
+/* optional disabled style */
+.nice-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
