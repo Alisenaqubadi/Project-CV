@@ -1,70 +1,144 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
+import {
+  GeneralInfo,
+  Education,
+  WorkExperience,
+  YourSkills,
+  isFormValid,
+  saveTheData,
+  data,
+} from "./cvs-forms";
+import { makeThePDF, saveThePDF, previewPDF } from "./pdfGenerator";
 
 function Header() {
-  return(
+  return (
     <>
-      <div className="header"> <h1>The CV Maker</h1> </div>
-    </>
-  )
-}
-
-function GeneralInfo(){
-  return(
-    <div className="GeneralInfo input-form">
-      <input type="text" id="Name"className="nice-input" placeholder="Name"/>
-      <input type="email" id="Email" className="nice-input" placeholder="Email"/>
-      <input type="tel" id="Phone" className="nice-input" placeholder="Phone"/>
-      <input type="text" id="Linkedin" className="nice-input" placeholder="Linkedin"/>
-    </div>
-  )
-}
-
-function Education(){
-  return(
-    <div className="Education input-form">
-      <input type="text" id="Institution" className="nice-input" placeholder="Institution"/>
-      <div className="date-parent">
-        <input type="date" id="Institution-start" className="nice-input"/>
+      <div className="header">
+        {" "}
+        <h1>The CV Maker</h1>{" "}
       </div>
-    </div>
-  )
+    </>
+  );
 }
 
-
-function Current(props){
-  if(props.show == 1){
-    return(<GeneralInfo />)
+function Current(props) {
+  if (props.show == 1) {
+    return <GeneralInfo />;
   } else if (props.show == 2) {
-    return(<Education />)
+    return <Education />;
+  } else if (props.show == 3) {
+    return <WorkExperience />;
+  } else if (props.show == 4) {
+    return <YourSkills />;
   }
 }
 
-function Body(){
-  const [show, setShow] = useState(1)
+function Body({ setPdfUrl }) {
+  const [show, setShow] = useState(1);
+  const [back, setBack] = useState(false);
+  const [next, setNext] = useState(true);
 
-  return(
+  useEffect(() => {
+    if (show === 1 && back) setBack(false);
+  }, [show, back]);
+  useEffect(() => {
+    if (show === 4) {
+      setNext(false);
+    } else {
+      setNext(true);
+    }
+  }, [show]);
+
+  return (
     <>
       <div className="body">
         <div className="form">
-          <h2>Make you CV</h2>
-          <Current show={show}/>
+          <Current show={show} />
           <div className="center-btn">
-            <button className="nice-btn" onClick={() => setShow(prev => prev + 1)}>Next</button>
+            {back && (
+              <button
+                className="nice-btn"
+                onClick={() => setShow((prev) => prev - 1)}
+              >
+                Back
+              </button>
+            )}
+            {next && (
+              <button
+                className="nice-btn"
+                onClick={() => {
+                  if (!isFormValid()) return;
+                  saveTheData(show);
+                  setShow((prev) => prev + 1);
+                  setBack(true);
+                }}
+              >
+                Next
+              </button>
+            )}
+            {!next && (
+              <button
+                className="nice-btn"
+                onClick={() => {
+                  saveTheData(4); // Save form data first
+                  const doc = makeThePDF(data);
+                  previewPDF(doc, setPdfUrl); // Preview PDF
+                }}
+              >
+                Finish
+              </button>
+            )}
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 function App() {
-  return (
-    <>
-      <Header />
-      <Body />
-    </>
-  );
+  const [pdfUrl, setPdfUrl] = useState(null);
+
+  if (pdfUrl === null) {
+    return (
+      <>
+        <Header />
+        <Body setPdfUrl={setPdfUrl} />
+      </>
+    );
+  } else {
+    return (
+      <div className="pdfPreview">
+        <Header />
+        {pdfUrl && (
+          <>
+            <iframe className="iframe" title="PDF Preview" src={pdfUrl} />
+            <div className="center-btn center-btn-for-final ">
+              <button
+                className="nice-btn"
+                onClick={() => {
+                  // Clean up the previous URL
+                  URL.revokeObjectURL(pdfUrl);
+                  setPdfUrl(null);
+                }}
+              >
+                Back to Form
+              </button>
+              <button
+                className="nice-btn"
+                onClick={() => {
+                  const doc = makeThePDF(data);
+                  saveThePDF(doc);
+                }}
+              >
+                Download PDF
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -1,101 +1,148 @@
 .header {
-    display: flex;
-    justify-content: center;
-    flex: 1;
+  display: flex;
+  justify-content: center;
+  flex: 1;
 }
 
 .header > h1:hover {
-    background: #181717;
-    border-radius: 1rem;
-    transform: translate(0.25rem,1rem);
-    transition: all 1s ease;
+  background: #181717;
+  border-radius: 1rem;
+  transform: translate(0.25rem, 1rem);
+  transition: all 1s ease;
 }
 
 .header > h1 {
-    padding: 1.25rem 3rem 0 3rem;
-    transition: all 1s ease-in;
-    height: 60%;
-    margin: 0;
+  padding: 1.25rem 3rem 0 3rem;
+  transition: all 1s ease-in;
+  height: 60%;
+  margin: 0;
 }
 
 .body {
-    flex: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  flex: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .form {
-    height: 70%;
-    width: min(55%,580px);
-    background: #000;
-    margin: auto;
-    border-radius: 1rem;
+  height: 70%;
+  width: min(55%, 580px);
+  background: #000;
+  margin: auto;
+  border-radius: 1rem;
 }
 
-.form > h2 {
-    text-align: center;
-    margin-top: 1rem;
+.input-form > h1 {
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .input-form {
-    display: grid;
-    height: 50%;
-    margin-top: 2rem
+  display: grid;
+  height: 60%;
+  margin-top: 2rem;
+}
+
+.input-form > h3 {
+  text-align: center;
 }
 
 .center-btn {
-    padding-top: 2rem;
-    display: flex;
-    justify-content: center;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.date-parent {
+.date-parent,
+.input-wrapper {
   width: 100%;
   max-width: 290px;
   margin: 0 auto;
   transform: translate(-3%);
 }
 
+.error-text {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  display: block;
+}
 
+.center-btn-for-final {
+  width: 40vw;
+}
+
+.pdfPreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.iframe {
+  width: 100%;
+  height: 70vh;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
 /* use on a <button class="nice-btn">...</button> */
 /* Designed for a black app background (body {background:#000}) */
 
-.nice-btn{
-  background: linear-gradient(180deg,#ffffff 0%, #f2f2f2 100%);
+.nice-btn {
+  background: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
   color: #0a0a0a;
   border: none;
-  padding: .6rem 1.05rem;
+  padding: 0.6rem 1.05rem;
   font-weight: 600;
   font-size: 0.95rem;
   border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.6);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
   cursor: pointer;
-  letter-spacing: .6px;
+  letter-spacing: 0.6px;
   text-transform: none;
-  transition: transform .14s ease, box-shadow .14s ease, filter .14s ease;
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease,
+    filter 0.14s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 /* hover / focus */
 .nice-btn:hover,
-.nice-btn:focus{
+.nice-btn:focus {
   transform: translateY(-3px);
-  box-shadow: 0 12px 26px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.65);
-  outline: 3px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  outline: 3px solid rgba(255, 255, 255, 0.08);
 }
 
 /* active (press) */
-.nice-btn:active{
+.nice-btn:active {
   transform: translateY(0);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.5);
-  filter: brightness(.98);
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  filter: brightness(0.98);
 }
 
 /* small / large variants (optional) */
-.nice-btn.sm{ padding: .4rem .8rem; font-size:.85rem; border-radius:10px;}
-.nice-btn.lg{ padding: .9rem 1.4rem; font-size:1.05rem; border-radius:16px;}
+.nice-btn.sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: 10px;
+}
+.nice-btn.lg {
+  padding: 0.9rem 1.4rem;
+  font-size: 1.05rem;
+  border-radius: 16px;
+}
 
 /* input field to match .nice-btn style on dark background */
 
@@ -106,9 +153,14 @@
   padding: 0.6rem 1rem;
   font-size: 0.95rem;
   border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
   outline: none;
-  transition: box-shadow 0.14s ease, transform 0.14s ease, filter 0.14s ease;
+  transition:
+    box-shadow 0.14s ease,
+    transform 0.14s ease,
+    filter 0.14s ease;
   width: 100%;
   max-width: 280px;
   -webkit-tap-highlight-color: transparent;
@@ -119,7 +171,9 @@
 .nice-input:focus,
 .nice-input:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
   font-size: 97%;
 }
 
@@ -133,4 +187,9 @@
 .nice-input:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+textarea.nice-input {
+  min-height: 100px;
+  resize: vertical; /* allow resize up/down */
 }
