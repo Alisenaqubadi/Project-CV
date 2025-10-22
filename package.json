@@ -12,7 +12,8 @@
     "webpack:serve": "npx webpack serve",
     "clean-the-code": "npx eslint . --fix && npx prettier . --write",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "upload-to-github-pages": "git branch gh-pages || true && git checkout gh-pages && git merge main --no-edit && git add dist -f && git commit -m 'Deployment commit' || true && git subtree push --prefix dist origin gh-pages && git checkout main"
   },
   "dependencies": {
     "canvas": "^3.2.0",
