@@ -1,16 +1,103 @@
-# React + Vite
+# Project-CV
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React + Vite application for creating and exporting CVs (curricula vitae / résumés).
 
-Currently, two official plugins are available:
+This repository is a compact starter built with Vite + React. It includes a simple UI to enter CV data, preview it, and export a printable PDF. The project follows a lightweight, zero-config approach so you can focus on features and styling.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- Fill in multiple CV sections (personal info, education, experience, skills, etc.)
+- Live preview of the generated CV
+- Export to PDF
+- Minimal, responsive CSS and a tidy component structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Quick start
 
-## Expanding the ESLint configuration
+1. Install dependencies
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+```
+
+2. Run the development server (with HMR)
+
+```bash
+npm run dev
+```
+
+3. Build for production
+
+```bash
+npm run build
+```
+
+4. Preview the production build locally
+
+```bash
+npm run preview
+```
+
+## Scripts
+
+- `dev` - start Vite dev server
+- `build` - create a production build
+- `preview` - locally preview the production build
+- `test` - run unit tests (Jest)
+- `lint` - run ESLint
+
+(See `package.json` for the exact commands configured in this repository.)
+
+## Project structure (important files)
+
+- `index.html` — app entry HTML
+- `src/main.jsx` — app bootstrap
+- `src/App.jsx` — main app component
+- `src/cvs-forms.js` — form state & helpers for CV sections
+- `src/pdfGenerator.js` — PDF export logic
+- `src/assets/` — images and static assets
+- `public/` — static public files
+
+## Testing & Linting
+
+This project uses Jest for tests and ESLint for linting.
+
+- Run tests:
+
+```bash
+npm test
+```
+
+- Run linter:
+
+```bash
+npm run lint
+```
+
+## Notes and tips
+
+- The app is intentionally minimal so you can style and extend it for your needs.
+- If you add images or custom fonts, put them in `src/assets` or `public/` and reference them from components.
+
+## Contributing
+
+Contributions are welcome. Open an issue or submit a pull request for fixes, features, or improvements.
+
+When contributing, please:
+
+1. Fork the repository and create a feature branch
+2. Keep changes focused and add tests for new behavior
+3. Run `npm test` and `npm run lint` before submitting a PR
+
+## License
+
+This project does not include a license file. Add one (for example, `MIT`) if you plan to open-source it publicly.
+
+---
+
+If you'd like, I can also:
+
+- add a short CONTRIBUTING.md and LICENSE
+- add a small example screenshot to `README.md` (requires adding the image to `src/assets`)
+- wire up a GitHub Actions workflow for tests and linting
+
+Tell me which of these you'd like next.
