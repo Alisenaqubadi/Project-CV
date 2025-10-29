@@ -88,10 +88,6 @@ When contributing, please:
 2. Keep changes focused and add tests for new behavior
 3. Run `npm test` and `npm run lint` before submitting a PR
 
-## License
-
-This project does not include a license file. Add one (for example, `MIT`) if you plan to open-source it publicly.
-
 ---
 
 If you'd like, I can also:
